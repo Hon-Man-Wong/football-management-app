@@ -1,5 +1,8 @@
-package com.createment.footballmanager;
+package com.createment.footballmanager.Player;
 
+import com.createment.footballmanager.Country;
+import com.createment.footballmanager.Position;
+import com.createment.footballmanager.Team.Team;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -15,12 +18,14 @@ public class Player {
     @JoinColumn(name = "team")
     private Team team;
     @Enumerated(EnumType.STRING)
+    @Column(length = 3)
     private Position position;
     @Column
     private String dateOfBirth;
     @Column
     private String city;
     @Enumerated(EnumType.STRING)
+    @Column(length = 30)
     private Country country;
     @Column
     private Integer shirtNumber;

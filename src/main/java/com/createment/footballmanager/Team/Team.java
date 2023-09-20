@@ -1,5 +1,9 @@
-package com.createment.footballmanager;
+package com.createment.footballmanager.Team;
 
+import com.createment.footballmanager.Country;
+import com.createment.footballmanager.League;
+import com.createment.footballmanager.Match.Match;
+import com.createment.footballmanager.Player.Player;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -20,11 +24,16 @@ public class Team {
     @Column(columnDefinition = "TEXT")
     private String description;
     @Enumerated(EnumType.STRING)
+    @Column(length = 20)
     private League league;
     @Enumerated(EnumType.STRING)
+    @Column(length = 30)
     private Country country;
     @Column
     private String city;
+    @JsonIgnore
+    @OneToMany
+    private List<Match> matchList = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -80,6 +89,10 @@ public class Team {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public List<Match> getMatchList() {
+        return matchList;
     }
 
     @Override
