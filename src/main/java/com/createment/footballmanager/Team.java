@@ -8,21 +8,22 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "Teams")
 public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column
+    @Column(length = 40)
     private String name;
     @JsonIgnore
     @OneToMany(mappedBy = "team")
     private List<Player> playerList = new ArrayList<>();
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String description;
-    @Column
-    private String league;
-    @Column
-    private String country;
+    @Enumerated(EnumType.STRING)
+    private League league;
+    @Enumerated(EnumType.STRING)
+    private Country country;
     @Column
     private String city;
 
@@ -58,19 +59,19 @@ public class Team {
         this.description = description;
     }
 
-    public String getLeague() {
+    public League getLeague() {
         return league;
     }
 
-    public void setLeague(String league) {
+    public void setLeague(League league) {
         this.league = league;
     }
 
-    public String getCountry() {
+    public Country getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
+    public void setCountry(Country country) {
         this.country = country;
     }
 

@@ -5,23 +5,24 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Table(name = "players")
 public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column
+    @Column(length = 30)
     private String name;
     @ManyToOne
     @JoinColumn(name = "team")
     private Team team;
-    @Column
-    private String position;
+    @Enumerated(EnumType.STRING)
+    private Position position;
     @Column
     private String dateOfBirth;
     @Column
     private String city;
-    @Column
-    private String country;
+    @Enumerated(EnumType.STRING)
+    private Country country;
     @Column
     private Integer shirtNumber;
 
@@ -49,11 +50,11 @@ public class Player {
         this.team = team;
     }
 
-    public String getPosition() {
+    public Position getPosition() {
         return position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(Position position) {
         this.position = position;
     }
 
@@ -73,11 +74,11 @@ public class Player {
         this.city = city;
     }
 
-    public String getCountry() {
+    public Country getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
+    public void setCountry(Country country) {
         this.country = country;
     }
 
