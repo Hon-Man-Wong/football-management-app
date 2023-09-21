@@ -6,6 +6,7 @@ import com.createment.footballmanager.Team.Team;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -30,6 +31,7 @@ public class Player {
     private Country country;
     @Column
     private Integer shirtNumber;
+
 
     public Integer getId() {
         return id;
