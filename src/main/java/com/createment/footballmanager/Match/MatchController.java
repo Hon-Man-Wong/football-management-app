@@ -1,8 +1,7 @@
 package com.createment.footballmanager.Match;
 
-import com.createment.footballmanager.Player.Player;
+import com.createment.footballmanager.Match.Event.Event;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,4 +28,6 @@ public class MatchController {
     public List<Match> showMatchesByTeamById(@PathVariable Integer teamId) {
         return matchRepository.findAllByHomeTeamIdOrAwayTeamId(teamId, teamId);
     }
+
+
 }

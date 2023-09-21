@@ -1,6 +1,6 @@
 package com.createment.footballmanager.Match;
 
-import com.createment.footballmanager.Player.Player;
+import com.createment.footballmanager.Match.Event.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

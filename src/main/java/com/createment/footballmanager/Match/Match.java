@@ -1,10 +1,12 @@
 package com.createment.footballmanager.Match;
 
+import com.createment.footballmanager.Match.Event.Event;
 import com.createment.footballmanager.Team.Team;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
+import java.util.List;
 
 @Entity
 public class Match {
@@ -21,6 +23,9 @@ public class Match {
     private Team awayTeam;
     @Column(length = 10)
     private String score;
+    @JsonIgnore
+    @OneToMany(mappedBy = "match")
+    private List<Event> events;
 
     public Integer getId() {
         return id;
@@ -62,16 +67,11 @@ public class Match {
         this.score = score;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Match match = (Match) o;
-        return Objects.equals(id, match.id) && Objects.equals(startTime, match.startTime) && Objects.equals(homeTeam, match.homeTeam) && Objects.equals(awayTeam, match.awayTeam);
+    public List<Event> getEvents() {
+        return events;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, startTime, homeTeam, awayTeam);
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 }
