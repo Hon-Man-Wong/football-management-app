@@ -5,6 +5,7 @@ import com.createment.footballmanager.Position;
 import com.createment.footballmanager.Team.Team;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -21,7 +22,7 @@ public class Player {
     @Column(length = 3)
     private Position position;
     @Column
-    private String dateOfBirth;
+    private LocalDate dateOfBirth;
     @Column
     private String city;
     @Enumerated(EnumType.STRING)
@@ -62,11 +63,11 @@ public class Player {
         this.position = position;
     }
 
-    public String getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

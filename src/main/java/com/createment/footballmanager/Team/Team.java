@@ -32,8 +32,11 @@ public class Team {
     @Column
     private String city;
     @JsonIgnore
-    @OneToMany
-    private List<Match> matchList = new ArrayList<>();
+    @OneToMany(mappedBy = "homeTeam")
+    private List<Match> homeMatchList = new ArrayList<>();
+    @JsonIgnore
+    @OneToMany(mappedBy = "awayTeam")
+    private List<Match> awayMatchList = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -91,8 +94,20 @@ public class Team {
         this.city = city;
     }
 
-    public List<Match> getMatchList() {
-        return matchList;
+    public List<Match> getHomeMatchList() {
+        return homeMatchList;
+    }
+
+    public void setHomeMatchList(List<Match> homeMatchList) {
+        this.homeMatchList = homeMatchList;
+    }
+
+    public List<Match> getAwayMatchList() {
+        return awayMatchList;
+    }
+
+    public void setAwayMatchList(List<Match> awayMatchList) {
+        this.awayMatchList = awayMatchList;
     }
 
     @Override
