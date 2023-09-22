@@ -18,7 +18,7 @@ public class PlayerService {
         this.playerRepository = playerRepository;
     }
 
-    public int getAge(LocalDate dateOfBirth) {
+    public int calculateAge(LocalDate dateOfBirth) {
         LocalDate currentDate = LocalDate.now();
         Period age = Period.between(dateOfBirth, currentDate);
         return age.getYears();
