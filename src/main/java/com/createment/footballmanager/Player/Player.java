@@ -24,6 +24,9 @@ public class Player {
     private Position position;
     @Column
     private LocalDate dateOfBirth;
+
+    @Column
+    private Integer age;
     @Column
     private String city;
     @Enumerated(EnumType.STRING)
@@ -33,6 +36,13 @@ public class Player {
     private Integer shirtNumber;
 
 
+    public int getAge(){
+        PlayerService playerService = new PlayerService();
+        return playerService.getAge(dateOfBirth);
+    }
+    public void setAge(){
+        this.age = age;
+    }
     public Integer getId() {
         return id;
     }
