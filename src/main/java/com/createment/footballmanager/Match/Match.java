@@ -21,8 +21,10 @@ public class Match {
     @ManyToOne
     @JoinColumn(name = "away_team")
     private Team awayTeam;
-    @Column(length = 10)
-    private String score;
+    @Column(length = 2)
+    private int homeScore;
+    @Column(length = 2)
+    private int awayScore;
     @JsonIgnore
     @OneToMany(mappedBy = "match")
     private List<Event> events;
@@ -59,12 +61,20 @@ public class Match {
         this.awayTeam = awayTeam;
     }
 
-    public String getScore() {
-        return score;
+    public int getHomeScore() {
+        return homeScore;
     }
 
-    public void setScore(String score) {
-        this.score = score;
+    public void setHomeScore(int homeScore) {
+        this.homeScore = homeScore;
+    }
+
+    public int getAwayScore() {
+        return awayScore;
+    }
+
+    public void setAwayScore(int awayScore) {
+        this.awayScore = awayScore;
     }
 
     public List<Event> getEvents() {

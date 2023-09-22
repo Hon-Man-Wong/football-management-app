@@ -1,10 +1,8 @@
 package com.createment.footballmanager.Player;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -12,10 +10,12 @@ import java.util.List;
 @RequestMapping("/players")
 public class PlayerController {
     private final PlayerRepository playerRepository;
+    private final PlayerService playerService;
 
     @Autowired
-    public PlayerController(PlayerRepository playerRepository) {
+    public PlayerController(PlayerRepository playerRepository, PlayerService playerService) {
         this.playerRepository = playerRepository;
+        this.playerService = playerService;
     }
 
     @GetMapping
@@ -26,5 +26,20 @@ public class PlayerController {
     @GetMapping("/{playerId}")
     public Player showPlayerById(@PathVariable Integer playerId) {
         return playerRepository.findById(playerId).orElseThrow();
+    }
+
+    @PostMapping
+    public Player addPlayer(@RequestBody Player player) {
+        return playerRepository.save(player);
+    }
+
+    @PutMapping("{playerId}")
+    public ResponseEntity updatePlayer(@PathVariable Integer playerId, @RequestBody Player player) {
+        return playerService.updatePlayer(playerId, player);
+    }
+
+    @DeleteMapping("{playerId}")
+    public void deletePlayer(@PathVariable Integer playerId) {
+        playerRepository.deleteById(playerId);
     }
 }
