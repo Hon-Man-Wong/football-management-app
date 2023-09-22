@@ -1,4 +1,4 @@
-package com.createment.footballmanager;
+package com.createment.footballmanager.Enumerations;
 
 public enum Country {
     USA("United States of America"),

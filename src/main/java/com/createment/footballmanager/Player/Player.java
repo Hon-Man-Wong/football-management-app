@@ -1,7 +1,7 @@
 package com.createment.footballmanager.Player;
 
-import com.createment.footballmanager.Country;
-import com.createment.footballmanager.Position;
+import com.createment.footballmanager.Enumerations.Country;
+import com.createment.footballmanager.Enumerations.Position;
 import com.createment.footballmanager.Team.Team;
 import jakarta.persistence.*;
 

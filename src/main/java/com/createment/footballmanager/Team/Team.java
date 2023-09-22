@@ -1,7 +1,7 @@
 package com.createment.footballmanager.Team;
 
-import com.createment.footballmanager.Country;
-import com.createment.footballmanager.League;
+import com.createment.footballmanager.Enumerations.Country;
+import com.createment.footballmanager.Enumerations.League;
 import com.createment.footballmanager.Match.Match;
 import com.createment.footballmanager.Player.Player;
 import com.fasterxml.jackson.annotation.JsonIgnore;

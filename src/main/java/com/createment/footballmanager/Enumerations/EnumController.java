@@ -1,4 +1,4 @@
-package com.createment.footballmanager;
+package com.createment.footballmanager.Enumerations;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

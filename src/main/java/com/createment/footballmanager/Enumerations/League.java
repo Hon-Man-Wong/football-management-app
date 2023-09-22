@@ -1,4 +1,4 @@
-package com.createment.footballmanager;
+package com.createment.footballmanager.Enumerations;
 
 public enum League { PREMIER_LEAGUE,
     LA_LIGA,

@@ -2,11 +2,7 @@ package com.createment.footballmanager.Match.Event;
 
 import com.createment.footballmanager.Match.Match;
 import com.createment.footballmanager.Player.Player;
-import com.createment.footballmanager.Position;
 import jakarta.persistence.*;
-
-import java.util.List;
-import java.util.Objects;
 
 @Entity
 public class Event {
