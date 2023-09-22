@@ -26,7 +26,7 @@ public class PlayerController {
 
     @GetMapping("/{playerId}")
     public Player showPlayerById(@PathVariable Integer playerId) {
-        return playerRepository.findById(playerId).orElseThrow();
+        return playerRepository.findById(playerId).orElseThrow(() -> new PlayerNotFoundException(String.format("No player with id %s is available", playerId)));
     }
 
     @PostMapping
