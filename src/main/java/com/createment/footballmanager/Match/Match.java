@@ -15,10 +15,10 @@ public class Match {
     private Integer id;
     @Column
     private LocalDateTime startTime;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "home_team")
     private Team homeTeam;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "away_team")
     private Team awayTeam;
     @Column(length = 10)

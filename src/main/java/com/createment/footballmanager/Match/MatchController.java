@@ -2,10 +2,7 @@ package com.createment.footballmanager.Match;
 
 import com.createment.footballmanager.Match.Event.Event;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,8 +21,8 @@ public class MatchController {
         return matchRepository.findAll();
     }
 
-    @GetMapping("teams/{teamId}")
-    public List<Match> showMatchesByTeamById(@PathVariable Integer teamId) {
+    @GetMapping(params = "team")
+    public List<Match> showMatchesByTeamById(@RequestParam("team") Integer teamId) {
         return matchRepository.findAllByHomeTeamIdOrAwayTeamId(teamId, teamId);
     }
 

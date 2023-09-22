@@ -1,11 +1,3 @@
--- Drop the existing foreign key constraints
-ALTER TABLE Match DROP CONSTRAINT match_home_team_key;
-ALTER TABLE Match DROP CONSTRAINT match_away_team_key;
-
--- Remove the uniqueness constraints from home_team_id and away_team_id columns
-ALTER TABLE Match ALTER COLUMN home_team DROP NOT NULL;
-ALTER TABLE Match ALTER COLUMN away_team DROP NOT NULL;
-
 INSERT INTO team(description, name) values('Club from Rotterdam', 'Feyenoord')
 INSERT INTO team(description, name) values('Club from Rotterdam', 'Sparta')
 INSERT INTO team(description, name) values('Club from Rotterdam', 'Excelsior')
