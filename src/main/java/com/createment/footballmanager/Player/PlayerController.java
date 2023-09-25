@@ -1,10 +1,12 @@
 package com.createment.footballmanager.Player;
 
+import com.createment.footballmanager.Team.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin
 @RestController
@@ -19,10 +21,10 @@ public class PlayerController {
         this.playerService = playerService;
     }
 
-    @GetMapping
-    public List<Player> showAllPlayers() {
-        return playerRepository.findAll();
-    }
+//    @GetMapping
+//    public List<Player> showAllPlayers() {
+//        return playerRepository.findAll();
+//    }
 
     @GetMapping("/{playerId}")
     public Player showPlayerById(@PathVariable Integer playerId) {
@@ -43,4 +45,18 @@ public class PlayerController {
     public void deletePlayer(@PathVariable Integer playerId) {
         playerRepository.deleteById(playerId);
     }
+
+    @GetMapping("")
+    public List<Player> filterPlayers(
+            @RequestParam(name = "name", required = false) String nameFilter,
+            @RequestParam(name = "team", required = false) String teamFilter
+    ){
+
+        List<Player> filteredPlayers = playerRepository.findAll().stream()
+                .filter(player -> nameFilter == null || player.getName().contains(nameFilter))
+                .filter(player -> teamFilter == null || player.getTeamName().contains(teamFilter))
+                .collect(Collectors.toList());
+
+        return filteredPlayers;
+    };
 }

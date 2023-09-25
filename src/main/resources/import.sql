@@ -1,7 +1,8 @@
-INSERT INTO team(description, name) values('Club from Rotterdam', 'Feyenoord')
-INSERT INTO team(description, name) values('Club from Rotterdam', 'Sparta')
-INSERT INTO team(description, name) values('Club from Rotterdam', 'Excelsior')
-INSERT INTO team(description, name) values('Club from Eindhoven', 'PSV')
+INSERT INTO team(description, name, country) values('Club from Rotterdam', 'Feyenoord', 'NETHERLANDS')
+INSERT INTO team(description, name, country) values('Club from Rotterdam', 'Sparta', 'NETHERLANDS')
+INSERT INTO team(description, name, country) values('Club from Rotterdam', 'Excelsior', 'NETHERLANDS')
+INSERT INTO team(description, name, country) values('Club from Eindhoven', 'PSV', 'NETHERLANDS')
+INSERT INTO team(description, name, country) values('Club from Genk', 'KRC Genk', 'BELGIUM')
 
 INSERT INTO player(name, team, position, date_of_birth) values('Lutsharel Geertruida', 1, 'RB', '1998-10-10')
 INSERT INTO player(name, team, position) values('Bob', 1, 'RWB')

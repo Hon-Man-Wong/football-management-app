@@ -1,5 +1,6 @@
 package com.createment.footballmanager.Team;
 
+import com.createment.footballmanager.Enumerations.Country;
 import com.createment.footballmanager.Player.Player;
 import com.createment.footballmanager.Player.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @CrossOrigin
 @RestController
@@ -26,10 +28,10 @@ public class TeamController {
         this.teamService = teamService;
     }
 
-    @GetMapping
-    public List<Team> showAllTeams() {
-        return teamRepository.findAll();
-    }
+//    @GetMapping
+//    public List<Team> showAllTeams() {
+//        return teamRepository.findAll();
+//    }
 
     @GetMapping("/{teamId}")
     public Team showTeamById(@PathVariable Integer teamId) {
@@ -56,5 +58,20 @@ public class TeamController {
     public void deleteTeam(@PathVariable Integer teamId){
         teamRepository.deleteById(teamId);
     }
+
+    @GetMapping("")
+    public List<Team> filterTeams(
+            @RequestParam(name = "name", required = false) String nameFilter,
+            @RequestParam(name = "country", required = false) String countryFilter
+    ){
+
+        List<Team> filteredTeams = teamRepository.findAll().stream()
+                .filter(team -> nameFilter == null || team.getName().contains(nameFilter))
+//                .filter(team -> countryFilter == null || team.getCountry().name().toLowerCase().contains(countryFilter.toLowerCase()))
+                .filter(team -> countryFilter == null || team.getCountry() == Country.valueOf(countryFilter.toUpperCase()))
+                .collect(Collectors.toList());
+
+        return filteredTeams;
+    };
 }
 

@@ -3,6 +3,7 @@ package com.createment.footballmanager.Player;
 import com.createment.footballmanager.Enumerations.Country;
 import com.createment.footballmanager.Enumerations.Position;
 import com.createment.footballmanager.Team.Team;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -103,6 +104,12 @@ public class Player {
 
     public void setShirtNumber(Integer shirtNumber) {
         this.shirtNumber = shirtNumber;
+    }
+
+    @JsonIgnore
+    public String getTeamName(){
+        Team team = this.getTeam();
+        return team.getName();
     }
 
     @Override
