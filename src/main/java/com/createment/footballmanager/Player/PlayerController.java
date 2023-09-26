@@ -1,6 +1,5 @@
 package com.createment.footballmanager.Player;
 
-import com.createment.footballmanager.Team.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,11 +19,6 @@ public class PlayerController {
         this.playerRepository = playerRepository;
         this.playerService = playerService;
     }
-
-//    @GetMapping
-//    public List<Player> showAllPlayers() {
-//        return playerRepository.findAll();
-//    }
 
     @GetMapping("/{playerId}")
     public Player showPlayerById(@PathVariable Integer playerId) {

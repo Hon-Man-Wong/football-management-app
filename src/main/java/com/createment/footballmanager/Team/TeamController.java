@@ -28,11 +28,6 @@ public class TeamController {
         this.teamService = teamService;
     }
 
-//    @GetMapping
-//    public List<Team> showAllTeams() {
-//        return teamRepository.findAll();
-//    }
-
     @GetMapping("/{teamId}")
     public Team showTeamById(@PathVariable Integer teamId) {
         return teamRepository.findById(teamId).orElseThrow();
@@ -67,7 +62,6 @@ public class TeamController {
 
         List<Team> filteredTeams = teamRepository.findAll().stream()
                 .filter(team -> nameFilter == null || team.getName().contains(nameFilter))
-//                .filter(team -> countryFilter == null || team.getCountry().name().toLowerCase().contains(countryFilter.toLowerCase()))
                 .filter(team -> countryFilter == null || team.getCountry() == Country.valueOf(countryFilter.toUpperCase()))
                 .collect(Collectors.toList());
 

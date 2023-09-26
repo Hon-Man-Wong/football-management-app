@@ -33,6 +33,8 @@ public class Player {
     private Country country;
     @Column
     private Integer shirtNumber;
+    @Column
+    private String profilePicture;
 
     public Integer getId() {
         return id;
@@ -104,6 +106,14 @@ public class Player {
 
     public void setShirtNumber(Integer shirtNumber) {
         this.shirtNumber = shirtNumber;
+    }
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
 
     @JsonIgnore
