@@ -5,11 +5,19 @@ import com.createment.footballmanager.Enumerations.Position;
 import com.createment.footballmanager.Team.Team;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +42,9 @@ public class Player {
     @Column
     private Integer shirtNumber;
     @Column
-    private String profilePicture;
+    private String imagePath;
+    private String imageType;
+    private String imageName;
 
     public Integer getId() {
         return id;
@@ -108,12 +118,28 @@ public class Player {
         this.shirtNumber = shirtNumber;
     }
 
-    public String getProfilePicture() {
-        return profilePicture;
+    public String getImagePath() {
+        return imagePath;
     }
 
-    public void setProfilePicture(String profilePicture) {
-        this.profilePicture = profilePicture;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getImageType() {
+        return imageType;
+    }
+
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 
     @JsonIgnore

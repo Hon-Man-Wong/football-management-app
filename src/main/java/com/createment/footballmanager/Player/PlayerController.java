@@ -1,9 +1,13 @@
 package com.createment.footballmanager.Player;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -53,4 +57,19 @@ public class PlayerController {
 
         return filteredPlayers;
     };
+
+    @PostMapping("/fileSystem")
+    public ResponseEntity<?> uploadImageToFileSystem(@RequestParam("image")MultipartFile file) throws IOException {
+        String uploadImage = playerService.uploadImageToFileSystem(file);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(uploadImage);
+    }
+
+    @GetMapping("/fileSystem/{imageName}")
+    public ResponseEntity<?> downloadImageFromFileSystem(@PathVariable String imageName) throws IOException {
+        byte[] imageData = playerService.downloadImageFromFileSystem(imageName);
+        return ResponseEntity.status(HttpStatus.OK)
+                .contentType(MediaType.valueOf("image/png"))
+                .body(imageData);
+    }
 }

@@ -3,8 +3,12 @@ package com.createment.footballmanager.Player;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Field;
+import java.nio.file.Files;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Arrays;
@@ -13,6 +17,7 @@ import java.util.Optional;
 @Service
 public class PlayerService {
     private PlayerRepository playerRepository;
+    private final String FOLDER_PATH = "/football-management-app/src/main/java/com/createment/footballmanager/Assets/";
 
     public PlayerService(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
@@ -56,5 +61,29 @@ public class PlayerService {
             field.set(player, value);
         } catch (NoSuchFieldException | IllegalAccessException ignored) {
         }
+    }
+
+    public String uploadImageToFileSystem(MultipartFile file) throws IOException{
+
+        String imagePath = FOLDER_PATH + file.getOriginalFilename();
+
+        Player player = playerRepository.save(Player.builder()
+                .imageName(file.getOriginalFilename())
+                .imageType(file.getContentType())
+                .imagePath(imagePath).build());
+
+        file.transferTo( new File(imagePath));
+
+        if (player != null){
+            return "file uploaded succesfully: " + imagePath;
+        }
+        return null;
+    }
+
+    public byte[] downloadImageFromFileSystem(String imageName) throws IOException {
+        Optional<Player> imageData = playerRepository.findByImageName(imageName);
+        String imagePath = imageData.get().getImagePath();
+        byte[] images = Files.readAllBytes(new File(imagePath).toPath());
+        return images;
     }
 }
