@@ -47,8 +47,8 @@ public class PlayerController {
     ){
 
         List<Player> filteredPlayers = playerRepository.findAll().stream()
-                .filter(player -> nameFilter == null || player.getName().contains(nameFilter))
-                .filter(player -> teamFilter == null || player.getTeamName().contains(teamFilter))
+                .filter(player -> nameFilter == null || player.getName().toLowerCase().contains(nameFilter.toLowerCase()))
+                .filter(player -> teamFilter == null || player.getTeamName().toLowerCase().contains(teamFilter.toLowerCase()))
                 .collect(Collectors.toList());
 
         return filteredPlayers;

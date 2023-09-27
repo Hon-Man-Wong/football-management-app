@@ -61,7 +61,7 @@ public class TeamController {
     ){
 
         List<Team> filteredTeams = teamRepository.findAll().stream()
-                .filter(team -> nameFilter == null || team.getName().contains(nameFilter))
+                .filter(team -> nameFilter == null || team.getName().toLowerCase().contains(nameFilter.toLowerCase()))
                 .filter(team -> countryFilter == null || team.getCountry() == Country.valueOf(countryFilter.toUpperCase()))
                 .collect(Collectors.toList());
 
