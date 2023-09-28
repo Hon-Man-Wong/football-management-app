@@ -5,7 +5,7 @@ INSERT INTO team(description, name, country) values('Club from Eindhoven', 'PSV'
 INSERT INTO team(description, name, country) values('Club from Genk', 'KRC Genk', 'BELGIUM')
 
 INSERT INTO player(name, team, position, date_of_birth) values('Lutsharel Geertruida', 1, 'RB', '1998-10-10')
-INSERT INTO player(name, team, position, profile_picture) values('Bob', 1, 'RWB', 'com/createment/footballmanager/Assets/default.jpg')
+INSERT INTO player(name, team, position) values('Bob', 1, 'RWB')
 INSERT INTO player(name, team, position) values('Rob', 2, 'CDM')
 INSERT INTO player(name, team, position) values('Luuk de Jong', 4, 'ST')
 
