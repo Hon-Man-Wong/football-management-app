@@ -28,11 +28,6 @@ public class TeamController {
         this.teamService = teamService;
     }
 
-//    @GetMapping
-//    public List<Team> showAllTeams() {
-//        return teamRepository.findAll();
-//    }
-
     @GetMapping("/{teamId}")
     public Team showTeamById(@PathVariable Integer teamId) {
         return teamRepository.findById(teamId).orElseThrow();
