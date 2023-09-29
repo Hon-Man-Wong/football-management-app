@@ -42,6 +42,9 @@ public class Player {
     @Column
     private Integer shirtNumber;
     @Column
+    private String profilePicture;
+
+    @Column
     private String imagePath;
     private String imageType;
     private String imageName;
